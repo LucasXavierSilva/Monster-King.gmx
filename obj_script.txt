@@ -20,4 +20,78 @@ trange = 97 /// used for checking if player is within the talk range
 
 ///buttons used to proceed or start convo
 talk_button = "E";
+talk_button2 = "MOUSE_BUTTON";
 next_button = "R";
+next_button2 = "MOUSE_BUTTON";
+
+/// if true player will receive an event after talking a certain amount of time
+hidden_event = false;
+hidden_event_count = 0;
+hidden_event_max = 5;
+
+/// used for making text scroll and highlight
+scroll_text = 0;
+scroll_timer = 0.5;
+
+num = 1; ///used to select the next thing to say
+num_max = 2; ///used as the max amount of things character say
+
+///used to tell when a part of the convo is reached
+convo_part_max = 3; /// max amount of parts of the conversation
+convo_part = 1; ///begining of the conversation
+
+///List of everything the npc or characters will say
+
+///part1
+speak[1] = "Hello, this is me and that is you. Right?";
+speak[2] = "I know you do not understand, but oranges are very#tasty.";
+
+///part2
+speak[3] = "Well, I did'nt ask you anything...";
+speak[4] = "Well...";
+speak[5] = "leave me alone...";
+speak[6] = "";
+speak[7] = "";
+speak[8] = "";
+speak[9] = "";
+speak[10] = "";
+speak[11] = "";
+speak[12] = "";
+speak[13] = "";
+speak[14] = "";
+speak[15] = "";
+speak[16] = "";
+speak[17] = "";
+speak[18] = "";
+speak[19] = "";
+speak[20] = "";
+speak[21] = "";
+speak[22] = "";
+speak[23] = "";
+speak[24] = "";
+speak[25] = "";
+speak[26] = "";
+speak[27] = "";
+speak[28] = "";
+speak[29] = "";
+speak[30] = "";
+speak[31] = "";
+speak[32] = "";
+speak[33] = "";
+speak[34] = "";
+speak[35] = "";
+speak[36] = "";
+speak[37] = "";
+speak[38] = "";
+speak[39] = "";
+speak[40] = "";
+speak[41] = "";
+speak[42] = "";
+speak[43] = "";
+speak[44] = "";
+speak[45] = "";
+speak[46] = "";
+speak[47] = "";
+speak[48] = "";
+speak[49] = "";
+speak[50] = "";
