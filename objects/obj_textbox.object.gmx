@@ -51,10 +51,17 @@ my4 = view_wview[0] - 300;
 
 trange = 97 /// used for checking if player is within the talk range
 
+/// colors used for the background of the textbox
 c_calm = c_aqua;
 c_reg = c_black;
 c_angry = c_red;
 c_name = c_olive;
+
+///colors used for text highlight
+sc_silver = c_white;
+sc_white = c_green;
+sc_green = c_white;
+sc_teal = c_white;
 
 ///buttons used to proceed or start convo
 talk_button = "E";
@@ -160,7 +167,8 @@ speak[50] = "";
 //draw_self();
 
 ///drawing background of textbox
-if global.Convo == true &amp;&amp; convo == true{
+draw_rectangle_colour(mx2 - 200, my2 - 120, mx2 - 186 + string_width(speak[num]), my2 + string_height(speak[num]), c_white, c_white, c_white, c_white, false);
+if global.convo == true &amp;&amp; convo == true{
         ///setting the depth of textbox
         depth =  -170;
         ///set up the option to do certain things per sentence
@@ -270,12 +278,7 @@ if global.Convo == true &amp;&amp; convo == true{
             
             }
             break;
-            
-            case 21:{
-            
-            }
-            break;
-            
+                        
             case 23:{
             
             }
@@ -291,139 +294,304 @@ if global.Convo == true &amp;&amp; convo == true{
             }
             break;
             
-            case 26:{
-            
-            }
-            break;
-            
-            case 27:{
-            
-            }
-            break;
-            
-            case 28:{
-            
-            }
-            break;
-            
-            case 29:{
-            
-            }
-            break;
-            
-            case 30:{
-            
-            }
-            break;
-            
-            case 31:{
-            
-            }
-            break;
-            
-            case 32:{
-            
-            }
-            break;
-            
-            case 33:{
-            
-            }
-            break;
-            
-            case 34:{
-            
-            }
-            break;
-            
-            case 35:{
-            
-            }
-            break;
-            
-            case 36:{
-            
-            }
-            break;
-            
-            case 37:{
-            
-            }
-            break;
-            
-            case 38:{
-            
-            }
-            break;
-            
-            case 39:{
-            
-            }
-            break;
-            
-            case 40:{
-            
-            }
-            break;
-            
-            case 41:{
-            
-            }
-            break;
-            
-            case 42:{
-            
-            }
-            break;
-            
-            case 43:{
-            
-            }
-            break;
-            
-            case 44:{
-            
-            }
-            break;
-            
-            case 45:{
-            
-            }
-            break;
-            
-            case 46:{
-            
-            }
-            break;
-            
-            case 47:{
-            
-            }
-            break;
-            
-            case 48:{
-            
-            }
-            break;
-            
-            case 49:{
-            
-            }
-            break;
-            
-            case 50:{
-            
-            }
-            break;
-            
         }
         ///end checking sentence
 // draw_set_font(fnt_text_box)
     
-    ///bg filler
-    draw_rectangle_colour(mx3, my3, mx3-186 + string_width(speak[num]), my3 + string_height(speak[num]), c_calm, c_reg, c_angry, c_name, false);
-    }
-
+        ///bg filler
+        draw_rectangle_colour(mx2 - 200, my2 - 120, mx2 - 186 + string_width(speak[num]), my2 + string_height(speak[num]), c_calm, c_reg, c_angry, c_name, false);
+        ///bg outilner
+        draw_rectangle_colour(mx2 - 200, my2 - 120, mx2-186 + string_width(speak[num]), my2 + string_height(speak[num]), c_black, c_black, c_black, c_black, false);
+        
+        ///drawing text
+        draw_text(mx2 - 177, my2 - 100, speak[num]);
+        ///drawing highlight text
+        draw_text_colour(mx2 - 177, my2 - 100, string_copy(speak[num], 0, scroll_text), sc_silver, sc_white, sc_green, sc_teal, 1);
+        
+        /// drawing the "next" button
+        if scroll_text &gt;= string_length(speak[num]){
+                ///drawing sprite
+                //draw_sprite(spr_convo_proceed, 0, mx2 - 168 + string_widith(speak[num]), my2 - 107 + string_height(speak[num])/1.4);
+        }
+        
+        ///Drawing the scrolling text (highlighting text)
+        if scroll_text &lt; string_length(speak[num]){
+            scroll_text += scroll_timer;
+        }
+        
+        ///Seeing if player is trying to proceed with convo
+        if keyboard_check_pressed(ord(next_button)){
+            ///see if text is still scrolling
+            if scroll_text &lt; string_length(speak[num]){
+                scroll_text = string_length(speak[num]);
+            }
+            else{
+                ///proceeding to next sentence or part of convo
+                if num &lt; num_max{
+                    num += 1;
+                    scroll_text = 0;
+                }
+                /// checking if there is more to this convo and if player has reached breaking point
+                else if convo_part &lt; convo_part_max{
+                    convo_part += 1;
+                    
+                    ///creating a break point and/or proceeding to the next part of the convo
+                    switch (convo_part){
+                        case 2:{
+                        
+                        }
+                        break;
+                        
+                        case 3:{
+                        
+                        }
+                        break;
+                        case 4:{
+                        
+                        }
+                        break;
+                        
+                        case 5:{
+                        
+                        }
+                        break;
+                        
+                        case 6:{
+                        
+                        }
+                        break;
+                        
+                        case 7:{
+                        
+                        }
+                        break;
+                        
+                        case 8:{
+                        
+                        }
+                        break;
+                        
+                        case 9:{
+                        
+                        }
+                        break;
+                        
+                        case 10:{
+                        
+                        }
+                        break;
+                        
+                        case 11:{
+                        
+                        }
+                        break;
+                        
+                        case 12:{
+                        
+                        }
+                        break;
+                        
+                        case 13:{
+                        
+                        }
+                        break;
+                        
+                        case 14:{
+                        
+                        }
+                        break;
+                        
+                        case 15:{
+                        
+                        }
+                        break;
+                        
+                        case 16:{
+                        
+                        }
+                        break;
+                        
+                        case 17:{
+                        
+                        }
+                        break;
+                        
+                        case 18:{
+                        
+                        }
+                        break;
+                        
+                        case 19:{
+                        
+                        }
+                        break;
+                        
+                        case 20:{
+                        
+                        }
+                        break;
+                        
+                        case 21:{
+                        
+                        }
+                        break;
+                        
+                        case 23:{
+                        
+                        }
+                        break;
+                        
+                        case 24:{
+                        
+                        }
+                        break;
+                        
+                        case 25:{
+                        
+                        }
+                        break;
+                        
+                        case 26:{
+                        
+                        }
+                        break;
+                        
+                        case 27:{
+                        
+                        }
+                        break;
+                        
+                        case 28:{
+                        
+                        }
+                        break;
+                        
+                        case 29:{
+                        
+                        }
+                        break;
+                        
+                        case 30:{
+                        
+                        }
+                        break;
+                        
+                        case 31:{
+                        
+                        }
+                        break;
+                        
+                        case 32:{
+                        
+                        }
+                        break;
+                        
+                        case 33:{
+                        
+                        }
+                        break;
+                        
+                        case 34:{
+                        
+                        }
+                        break;
+                        
+                        case 35:{
+                        
+                        }
+                        break;
+                        
+                        case 36:{
+                        
+                        }
+                        break;
+                        
+                        case 37:{
+                        
+                        }
+                        break;
+                        
+                        case 38:{
+                        
+                        }
+                        break;
+                        
+                        case 39:{
+                        
+                        }
+                        break;
+                        
+                        case 40:{
+                        
+                        }
+                        break;
+                        
+                        case 41:{
+                        
+                        }
+                        break;
+                        
+                        case 42:{
+                        
+                        }
+                        break;
+                        
+                        case 43:{
+                        
+                        }
+                        break;
+                        
+                        case 44:{
+                        
+                        }
+                        break;
+                        
+                        case 45:{
+                        
+                        }
+                        break;
+                        
+                        case 46:{
+                        
+                        }
+                        break;
+                        
+                        case 47:{
+                        
+                        }
+                        break;
+                        
+                        case 48:{
+                        
+                        }
+                        break;
+                        
+                        case 49:{
+                        
+                        }
+                        break;
+                        
+                        case 50:{
+                        
+                        }
+                        break;
+                }/// endinf of checking wich part of convoi player is moving to
+            }/// ending of checking current convo convo part and if there is more to current convo
+            else if hidden_event == true{
+                ///increasing the counter used to tell game if player has met condition
+                //hidden_event_count += 1;
+            
+                ///Checking if a condition is need and if it has been met
+                if hidden_event_count &lt; hidden_event_max{
+                    ///activate hidden event [below]
+                    
+                }
+                else{
+                    ///reset the whole convo or start the convo from a fixed position
+                }
+            } /// end proceeding of next sentence
+        } ///end of player pressing the "next" button
+    } ///end of convo being activated
     
 else{ 
 ///checking if player is within talk range
@@ -431,10 +599,9 @@ else{
         if collision_circle(mx2, my2, trange, c_obj, false, true){
                 /// checking if player is trying to activate convo
                 if keyboard_check_pressed(ord(talk_button)){
-                    global.Convo = true;
-                    convo = true;
                 }
             }
+        }
     }
 </string>
           </argument>
